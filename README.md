@@ -1,139 +1,273 @@
-# ❄️ Snowflake CoCo CLI | Autonomous Enterprise SupplyGuard Agent
+# The Silicon Valley Engineering Manifesto: Cortex-SupplyGuard
+### Autonomous Enterprise Resilience Infrastructure Powered by Snowflake CoCo CLI
 
-> **Snowflake CoCo CLI Hackathon Entry 2026** — *Category: Intelligent Workflow Automation Agents*
-
-An AI-driven enterprise intelligence system that understands structured warehouse data, synthesizes unstructured operational logs via Snowflake Cortex AI, and autonomously executes multi-step supply chain resilience workflows using **Snowflake CoCo CLI Agent Skills**.
-
----
-
-## 🚀 Key Highlights & Business Impact
-
-| Metric | Business Impact |
-|---|---|
-| **Resolution Time (MTTR)** | **85% Reduction** (From days of manual triage to seconds) |
-| **Stockout Prevention** | **100% Proactive Mitigation** for critical lead-time anomalies |
-| **Financial Risk Prevented** | **$200,000+ Average Loss Avoided** per single assembly bottleneck |
-| **Governance & Policy** | **100% Auditable Ledger** with automatic financial guardrail enforcement |
+**Engineering Team:** EquiSaaS BD  
+**Founder & Systems Lead:** Kholipha Ahmmad Al-Amin (kholifaahmadalamin@gmail.com)  
+**Hackathon Challenge:** Snowflake CoCo CLI Hackathon 2026 (Intelligent Workflow Automation Agents)  
+**Public Repository:** https://github.com/kholipha-ahmmad-al-amin/cortex-supplyguard-agent  
 
 ---
 
-## 🛠️ System Architecture
+## The Problem
 
-The agent orchestrates three modular **CoCo Agent Skills** (`SKILL.md` format) in a stateful execution loop:
+Enterprise supply chains operate on paper-thin margins where unexpected lead-time spikes, maritime port delays, and supplier defaults cause catastrophic production halts. Traditional Enterprise Resource Planning (ERP) and Business Intelligence (BI) platforms are fundamentally passive: they log anomalies long after damage is done, forcing operational teams to manually inspect disparate tables, cross-reference email incident reports, and negotiate emergency procurement over days. 
 
-```mermaid
-graph TD
-    A[Snowflake Enterprise Warehouse: Inventory & Orders] --> B[Skill 1: data-anomaly-detector]
-    B -->|Structured Anomalies & Metrics| C[Skill 2: cortex-reasoner]
-    C -->|Cortex LLM & Unstructured Log Fusion| D[Policy Authorization Guardrails]
-    D -->|< $50,000 Budget: Auto-Approve| E[Skill 3: action-executor]
-    D -->|>= $50,000 Budget: Human Escalation| E
-    E --> F[Transactional PO / Reroute & Immutable Audit Ledger]
-    F --> G[Live CLI Console & Web Dashboard]
-```
+This latency results in millions of dollars of unmitigated revenue leakage per incident, operational paralysis, and compliance risks. Modern enterprise data infrastructure requires cognitive autonomy rather than static reporting.
 
 ---
 
-## 🧩 CoCo Agent Skills Included
+## The Solution
 
-### 1. `data-anomaly-detector` (`skills/data_anomaly_detector/SKILL.md`)
-- **Role:** Autonomous structured data scanning.
-- **Function:** Queries inventory, burn rates, supplier lead times, and shipping delays to compute composite risk scores (0–100) and flag items in critical depletion windows (< 7 days remaining).
+Cortex-SupplyGuard transforms passive enterprise data infrastructure into an autonomous cognitive operational loop. Built upon Snowflake CoCo CLI Agent Skills (`SKILL.md`), the architecture fuses real-time structured data scanning with multi-modal LLM reasoning using Snowflake Cortex AI (`SNOWFLAKE.CORTEX.COMPLETE`).
 
-### 2. `cortex-reasoner` (`skills/cortex_reasoner/SKILL.md`)
-- **Role:** Multi-modal LLM reasoning engine.
-- **Function:** Uses Snowflake Cortex AI (`SNOWFLAKE.CORTEX.COMPLETE`) to bridge structured anomaly metrics with unstructured logistics emails, weather alerts, and customs advisories to deduce root cause and quantify revenue risk ($).
+The system detects statistical inventory vulnerabilities, cross-references unstructured operational incident logs, quantifies monetary downtime risk, evaluates financial policy guardrails, and executes transactional mitigations autonomously.
 
-### 3. `action-executor` (`skills/action_executor/SKILL.md`)
-- **Role:** Policy-bounded operational transaction skill.
-- **Function:** Enforces financial guardrails (Auto-Approve < $50,000; Human Escalation >= $50,000), issues emergency purchase orders, updates inventory safety stock, and records immutable audit records.
+### Core Engineering Capabilities
+1. **Autonomous Anomaly Detection:** Continuous evaluation of warehouse burn rates, lead times, and safety stock buffer depletion.
+2. **Multi-Modal Cortex Reasoning:** Unstructured text intelligence connecting raw metrics with logistics incident logs, shipping alerts, and supplier emails.
+3. **Policy-Bounded Execution:** Strict financial guardrails enforcing automatic authorization for expenditures under $50,000 while routing higher-risk actions to human escalation queues.
+4. **Immutable Audit Ledger:** Full cryptographic traceability recording every prompt, reasoning path, and issued purchase order.
 
 ---
 
-## 💻 Quickstart & Execution Commands
+## Live Demo & Tech Stack
 
-### Prerequisites
-- Python 3.9+ installed
+Cortex-SupplyGuard is engineered for zero-cost deployment, allowing enterprises to run the full cognitive stack locally or in edge environments without incurring recurring server overhead.
 
-### 1. Install Dependencies
+### Tech Stack Breakdown
+* **Agentic Framework:** Snowflake CoCo CLI (Cortex Code Agent Skills Architecture)
+* **Cognitive AI Engine:** Snowflake Cortex AI (Snowflake Arctic LLM Completion Functions)
+* **Database Layer:** Snowflake AI Data Cloud / High-Performance SQLite Enterprise Emulator
+* **User Interface:** Rich Terminal CLI (ANSI Traces, Animated Progress Bars) & Glassmorphism Web App (HTML5, Vanilla CSS3, ES6 JavaScript, Flask)
+* **Testing & Quality Assurance:** PyTest End-to-End Suite
+
+---
+
+## Local Setup & Run Instructions
+
+Follow these copy-pasteable commands to set up and run the environment locally.
+
+### 1. Clone Repository & Install Dependencies
 ```bash
+git clone https://github.com/kholipha-ahmmad-al-amin/cortex-supplyguard-agent.git
+cd cortex-supplyguard-agent
 pip install -r requirements.txt
 ```
 
-### 2. Run Terminal Demonstration (`--demo`)
-Executes an end-to-end autonomous agent resolution in the terminal with step progress animations, execution traces, ANSI tables, and summary panels:
+### 2. Run Terminal Execution Demo
+Execute the full multi-step agent resolution loop in your terminal:
 ```bash
 python main.py --demo
 ```
+*(Or double-click `run_demo.bat` on Windows)*
 
-### 3. Interactive CoCo CLI Shell (`--cli`)
-Launch the interactive command line prompt:
-```bash
-python main.py --cli
-```
-*Available CLI Commands:*
-- `run` : Trigger autonomous supply chain workflow scan
-- `run SKU-9021` : Target specific component SKU
-- `skills` : Display registered CoCo Agent Skills
-- `inventory` : View live Snowflake warehouse inventory table
-- `audit` : View agent execution audit trail ledger
-- `exit` : Quit CLI shell
-
-### 4. Live Glassmorphism Web Dashboard (`--web`)
-Launch the web visualizer server:
+### 3. Launch Web Dashboard Visualizer
+Start the live interactive Web UI server:
 ```bash
 python main.py --web
 ```
-Open **http://127.0.0.1:5000** in your browser to inspect live metrics, interactive workflow DAG animations, real-time reasoning logs, and data tables.
+Open **http://127.0.0.1:5000** in your browser. *(Or double-click `run_web_dashboard.bat` on Windows)*
 
----
+### 4. Interactive CoCo CLI Prompt Shell
+Launch the interactive command line shell:
+```bash
+python main.py --cli
+```
+*(Or double-click `run_cli.bat` on Windows)*
 
-## 🧪 Automated Testing
-
-Execute the test suite verifying skill parsing, policy evaluation, decision branching, and end-to-end integration:
+### 5. Execute Automated Test Suite
+Run unit and integration verification tests:
 ```bash
 python main.py --test
-# or
-pytest tests/
+```
+*(Or double-click `run_tests.bat` on Windows)*
+
+---
+
+## System Documentation (Mermaid.js)
+
+### 1. System Architecture Diagram
+```mermaid
+graph TD
+    subgraph Data Layer
+        A[Snowflake Warehouse: INVENTORY_LEVELS]
+        B[Snowflake Warehouse: SUPPLIERS]
+        C[Snowflake Warehouse: INCIDENT_LOGS]
+    end
+
+    subgraph CoCo Agent Skills Layer
+        D["Skill 1: data-anomaly-detector"]
+        E["Skill 2: cortex-reasoner"]
+        F["Skill 3: action-executor"]
+    end
+
+    subgraph Decision Engine
+        G{Expenditure Policy Check}
+        H[Auto-Approve Branch]
+        I[Human Escalation Branch]
+    end
+
+    subgraph Output & Audit
+        J[Transaction PO Ledger]
+        K[Terminal CLI Visualizer]
+        L[Glassmorphism Web UI]
+    end
+
+    A --> D
+    D -->|Structured Risk Score| E
+    C -->|Unstructured Logs| E
+    E -->|Mitigation Plan| G
+    G -->|< $50,000 Budget| H
+    G -->|>= $50,000 Budget| I
+    H --> F
+    I --> F
+    F --> J
+    J --> K
+    J --> L
+```
+
+### 2. Entity-Relationship Diagram (ERD)
+```mermaid
+erDiagram
+    INVENTORY_LEVELS {
+        string item_id PK
+        string item_name
+        string category
+        string warehouse_location
+        float current_stock
+        float daily_burn_rate
+        int supplier_lead_time_days
+        int expected_arrival_delay_days
+        float unit_cost
+        float historical_unit_cost
+        string status
+    }
+
+    SUPPLIERS {
+        string supplier_id PK
+        string supplier_name
+        float reliability_score
+        string country
+        string contact_email
+    }
+
+    OPERATIONAL_INCIDENT_LOGS {
+        string log_id PK
+        string item_id FK
+        string source
+        string timestamp
+        string severity
+        string content
+    }
+
+    AUDIT_TRAIL {
+        string action_id PK
+        string timestamp
+        string po_number
+        string item_id FK
+        string item_name
+        string action_type
+        float cost_usd
+        string policy_authorization
+        string policy_reason
+    }
+
+    INVENTORY_LEVELS ||--o{ OPERATIONAL_INCIDENT_LOGS : "monitored_by"
+    INVENTORY_LEVELS ||--o{ AUDIT_TRAIL : "triggers"
+    SUPPLIERS ||--o{ INVENTORY_LEVELS : "supplies"
+```
+
+### 3. Data Flow Diagram (DFD)
+
+#### DFD Level 0 (Context Diagram)
+```mermaid
+graph LR
+    User([Operations Manager]) -->|Query / Trigger| AgentSystem[Cortex-SupplyGuard Agent System]
+    DataCloud[(Snowflake AI Data Cloud)] <-->|Warehouse Tables & Cortex LLM| AgentSystem
+    AgentSystem -->|Audit Logs & Purchase Orders| EnterpriseLedger[(Audit Ledger)]
+    AgentSystem -->|Live Telemetry & Recommendations| User
+```
+
+#### DFD Level 1 (Process Decomposition)
+```mermaid
+graph LR
+    Sub1[(Inventory DB)] --> P1[1.0 Anomaly Detection]
+    P1 -->|Risk Vector| P2[2.0 Multi-Modal Cortex Reasoning]
+    Sub2[(Incident Logs)] --> P2
+    P2 -->|Mitigation Plan| P3[3.0 Policy Evaluation]
+    P3 -->|Approved Plan| P4[4.0 Transaction Execution]
+    P4 --> Sub3[(Audit Ledger)]
+    P4 --> Sub4[(Updated Stock DB)]
+```
+
+### 4. Use Case Diagram
+```mermaid
+graph LR
+    subgraph Users & Actors
+        Manager([Supply Chain Manager])
+        System([Autonomous CoCo Agent])
+        CortexAI([Snowflake Cortex AI Engine])
+    end
+
+    subgraph System Boundary
+        UC1(Scan Inventory Anomalies)
+        UC2(Synthesize Incident Logs)
+        UC3(Quantify Financial Risk)
+        UC4(Evaluate Authorization Guardrails)
+        UC5(Issue Emergency Purchase Order)
+        UC6(View Live Execution Telemetry)
+    end
+
+    Manager --> UC1
+    Manager --> UC6
+    System --> UC1
+    System --> UC2
+    CortexAI --> UC2
+    System --> UC3
+    System --> UC4
+    System --> UC5
+```
+
+### 5. Sequence Diagram (Core User Interaction Loop)
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Manager as Operations Manager
+    participant CLI as CoCo CLI / Web UI
+    participant Orch as Agent Orchestrator
+    participant S1 as Skill 1: Anomaly Detector
+    participant S2 as Skill 2: Cortex Reasoner
+    participant S3 as Skill 3: Action Executor
+    participant DB as Snowflake Database
+
+    Manager->>CLI: Execute Workflow (run)
+    CLI->>Orch: Initiate Agentic Loop
+    Orch->>S1: Analyze Inventory Records
+    S1->>DB: Query INVENTORY_LEVELS Table
+    DB-->>S1: Return Stock Metrics
+    S1-->>Orch: Return Anomaly Vector (SKU-9021, Score: 75.3)
+
+    Orch->>S2: Perform Multi-Modal Reasoning
+    S2->>DB: Fetch OPERATIONAL_INCIDENT_LOGS
+    DB-->>S2: Return Shipping Delay Log
+    S2-->>Orch: Return Root Cause & Mitigation Options
+
+    Orch->>S3: Validate Policy & Execute Action
+    S3->>S3: Evaluate Expenditure Limit ($24,464 < $50,000 Limit)
+    S3->>DB: Update Stock & Insert AUDIT_TRAIL Record
+    DB-->>S3: Confirmation ACK
+    S3-->>Orch: Action Executed (PO-F4D23D)
+
+    Orch-->>CLI: Workflow Execution Complete
+    CLI-->>Manager: Display Execution Trace & Summary
 ```
 
 ---
 
-## 📁 Repository Structure
+## Engineering Team & Contact
 
-```
-coco-cli-competition/
-├── skills/
-│   ├── data_anomaly_detector/
-│   │   ├── SKILL.md
-│   │   └── detector_rules.py
-│   ├── cortex_reasoner/
-│   │   ├── SKILL.md
-│   │   └── reasoner_prompts.py
-│   └── action_executor/
-│       ├── SKILL.md
-│       └── execution_handlers.py
-├── src/
-│   ├── snowflake_engine.py       # Snowflake connection & database emulator
-│   ├── mock_data_generator.py   # Seeding enterprise warehouse data
-│   ├── skills_registry.py       # SKILL.md frontmatter parser & loader
-│   └── agent_orchestrator.py    # Multi-step state machine orchestrator
-├── cli/
-│   └── coco_runner.py           # Rich terminal interface powered by `rich`
-├── web/
-│   ├── index.html               # Glassmorphism enterprise dashboard UI
-│   ├── styles.css               # Modern dark theme styles
-│   ├── app.js                  # Interactive dashboard controller
-│   └── server.py                # Flask REST API server
-├── tests/
-│   ├── test_skills.py           # Unit tests for CoCo skills
-│   └── test_workflow.py         # End-to-end integration tests
-├── main.py                      # Primary entry point
-├── requirements.txt
-└── README.md                    # Project documentation
-```
+Developed by **EquiSaaS BD** for the Snowflake CoCo CLI Hackathon 2026.
 
----
-
-## 📜 License & Compliance
-Built for the **Snowflake CoCo CLI Hackathon 2026**. Designed in compliance with Snowflake AI Data Cloud standards.
+* **Engineering Lead:** Kholipha Ahmmad Al-Amin
+* **Email:** kholifaahmadalamin@gmail.com
+* **GitHub Organization:** https://github.com/kholipha-ahmmad-al-amin
