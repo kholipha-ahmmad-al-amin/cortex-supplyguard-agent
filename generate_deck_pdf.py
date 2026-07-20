@@ -1,5 +1,5 @@
 """
-Generates a professional presentation PDF deck for the Snowflake CoCo CLI Hackathon submission.
+Generates a professional submission PDF presentation deck for the Snowflake CoCo CLI Hackathon.
 """
 from reportlab.lib.pagesizes import letter, landscape
 from reportlab.lib import colors
@@ -28,15 +28,13 @@ class NumberedCanvas(canvas.Canvas):
         self.saveState()
         self.setFont("Helvetica-Bold", 9)
         self.setFillColor(colors.HexColor("#00E5FF"))
-        # Top banner accent
         self.rect(0, 590, 792, 22, fill=True, stroke=False)
         self.setFillColor(colors.HexColor("#0B0F19"))
         self.drawString(20, 597, "SNOWFLAKE CoCo CLI HACKATHON 2026 | SUBMISSION DECK")
         
-        # Footer
         self.setFont("Helvetica", 9)
         self.setFillColor(colors.HexColor("#64748B"))
-        self.drawString(20, 15, "EquiSaaS BD — Intelligent Workflow Automation Agents")
+        self.drawString(20, 15, "EquiSaaS BD — Kholipha Ahmmad Al-Amin (Leader) & Jannatul Nayeem")
         self.drawRightString(772, 15, f"Page {self._pageNumber} of {page_count}")
         self.restoreState()
 
@@ -55,67 +53,83 @@ def create_presentation_pdf(output_path="submission_deck.pdf"):
     title_style = ParagraphStyle(
         'DocTitle',
         fontName='Helvetica-Bold',
-        fontSize=24,
-        leading=28,
+        fontSize=22,
+        leading=26,
         textColor=colors.HexColor("#0B0F19"),
-        spaceAfter=10
+        spaceAfter=8
     )
     
     subtitle_style = ParagraphStyle(
         'SubTitle',
         fontName='Helvetica',
-        fontSize=13,
-        leading=16,
+        fontSize=12,
+        leading=15,
         textColor=colors.HexColor("#0088CC"),
-        spaceAfter=15
+        spaceAfter=12
     )
 
     h2_style = ParagraphStyle(
         'Heading2',
         fontName='Helvetica-Bold',
-        fontSize=16,
-        leading=20,
+        fontSize=15,
+        leading=18,
         textColor=colors.HexColor("#0B0F19"),
-        spaceBefore=10,
-        spaceAfter=10
+        spaceBefore=8,
+        spaceAfter=8
     )
 
     body_style = ParagraphStyle(
         'Body',
         fontName='Helvetica',
-        fontSize=10.5,
-        leading=14,
-        textColor=colors.HexColor("#1E293B"),
-        spaceAfter=8
-    )
-
-    bullet_style = ParagraphStyle(
-        'Bullet',
-        fontName='Helvetica',
         fontSize=10,
-        leading=14,
+        leading=13.5,
         textColor=colors.HexColor("#1E293B"),
-        leftIndent=15,
-        spaceAfter=4
+        spaceAfter=6
     )
 
     story = []
 
-    # SLIDE 1: Title & Overview
+    # SLIDE 1: Cover Page
     story.append(Paragraph("Snowflake CoCo CLI Enterprise SupplyGuard Agent", title_style))
-    story.append(Paragraph("Category: <b>Intelligent Workflow Automation Agents</b> | Team: <b>EquiSaaS BD</b>", subtitle_style))
-    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#00E5FF"), spaceAfter=15))
+    story.append(Paragraph("Team: <b>EquiSaaS BD</b> | Problem Statement: <b>Intelligent Workflow Automation Agents</b>", subtitle_style))
+    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#00E5FF"), spaceAfter=12))
     
-    story.append(Paragraph("<b>Executive Overview:</b>", h2_style))
-    story.append(Paragraph("Global supply chains suffer millions in losses due to unexpected shipping delays, vendor lead-time anomalies, and unmonitored stockout risks. Traditional BI tools only alert after line stoppage occurs.", body_style))
-    story.append(Paragraph("Our solution, <b>Cortex-SupplyGuard</b>, leverages <b>Snowflake CoCo CLI Agent Skills</b> to autonomously scan enterprise warehouse data, synthesize unstructured incident logs using Snowflake Cortex AI, and execute policy-bounded transactional mitigations in seconds.", body_style))
-    
+    team_info_data = [
+        ["Role", "Member Name", "Email Address"],
+        ["<b>Team Leader</b>", "Kholipha Ahmmad Al-Amin", "kholifaahmadalamin@gmail.com"],
+        ["<b>Team Member</b>", "Jannatul Nayeem", "jannatulnayeemdev@gmail.com"]
+    ]
+    t0 = Table(team_info_data, colWidths=[150, 250, 330])
+    t0.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0F172A")),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E1")),
+        ('PADDING', (0,0), (-1,-1), 6),
+    ]))
+    story.append(t0)
     story.append(Spacer(1, 10))
+
+    story.append(Paragraph("<b>Executive Summary:</b>", h2_style))
+    story.append(Paragraph("Global supply chains suffer millions in losses due to unmonitored supplier delays, maritime congestion, and inventory stockouts. Traditional ERP/BI systems are passive: they log anomalies long after damage is done.", body_style))
+    story.append(Paragraph("<b>Cortex-SupplyGuard</b> is an autonomous cognitive resilience system powered by <b>Snowflake CoCo CLI Agent Skills</b>. It continuously scans warehouse tables, synthesizes unstructured incident logs using Snowflake Cortex AI, and executes policy-bounded transactional mitigations in under 3 seconds.", body_style))
+    story.append(PageBreak())
+
+    # SLIDE 2: Problem Brief
+    story.append(Paragraph("1. Problem Brief & Business Domain", title_style))
+    story.append(Paragraph("Target Persona: VP of Supply Chain, Operations Managers, Procurement Directors", subtitle_style))
+    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#00E5FF"), spaceAfter=12))
+
+    story.append(Paragraph("• <b>Real Business Problem:</b> Unexpected lead-time spikes and port delays cause assembly line stoppage. Traditional BI tools alert only after line halt occurs.", body_style))
+    story.append(Paragraph("• <b>Current Pain Point:</b> Operational teams spend 2 to 5 days manually cross-referencing SQL inventory tables with unstructured logistics email reports.", body_style))
+    story.append(Paragraph("• <b>Our Solution (Cortex-SupplyGuard):</b> Autonomous multi-step workflow orchestrating 3 specialized CoCo Agent Skills to detect statistical anomalies, deduce root cause via Snowflake Cortex AI, and issue policy-bounded emergency purchase orders.", body_style))
+    story.append(Spacer(1, 10))
+
     table_data = [
         ["Key Business Metric", "Traditional Manual Process", "Autonomous CoCo Agent"],
         ["Resolution Time (MTTR)", "2 - 5 Days of manual triage", "<b>Instant (< 3 Seconds)</b>"],
         ["Stockout Prevention", "Reactive after production halt", "<b>100% Proactive Buffer Reroute</b>"],
-        ["Quantified Risk Avoided", "High financial leakage", "<b>$200,000+ per incident</b>"],
+        ["Quantified Loss Avoided", "High financial leakage", "<b>$200,000+ per incident</b>"],
         ["Governance & Policy", "Prone to manual oversight", "<b>100% Auditable Ledger</b>"]
     ]
     t1 = Table(table_data, colWidths=[200, 260, 270])
@@ -123,8 +137,6 @@ def create_presentation_pdf(output_path="submission_deck.pdf"):
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0F172A")),
         ('TEXTCOLOR', (0,0), (-1,0), colors.white),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0,0), (-1,0), 10),
-        ('ALIGN', (0,0), (-1,-1), 'LEFT'),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E1")),
         ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor("#F8FAFC")]),
         ('PADDING', (0,0), (-1,-1), 6),
@@ -132,10 +144,10 @@ def create_presentation_pdf(output_path="submission_deck.pdf"):
     story.append(t1)
     story.append(PageBreak())
 
-    # SLIDE 2: 3 CoCo Agent Skills Architecture
-    story.append(Paragraph("Modular CoCo Agent Skills Architecture", title_style))
+    # SLIDE 3: CoCo Agent Skills Architecture
+    story.append(Paragraph("2. Modular CoCo Agent Skills Architecture", title_style))
     story.append(Paragraph("Built using standardized <code>SKILL.md</code> CoCo specification format", subtitle_style))
-    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#00E5FF"), spaceAfter=15))
+    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#00E5FF"), spaceAfter=12))
 
     skill_table_data = [
         ["Skill Name & Directory", "Role & Capabilities", "Input / Output Schema"],
@@ -160,47 +172,32 @@ def create_presentation_pdf(output_path="submission_deck.pdf"):
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0088CC")),
         ('TEXTCOLOR', (0,0), (-1,0), colors.white),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0,0), (-1,0), 10),
-        ('ALIGN', (0,0), (-1,-1), 'LEFT'),
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E1")),
         ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor("#F8FAFC")]),
-        ('PADDING', (0,0), (-1,-1), 8),
+        ('PADDING', (0,0), (-1,-1), 6),
     ]))
     story.append(t2)
     story.append(PageBreak())
 
-    # SLIDE 3: End-to-End Multi-Step Orchestration & Interfaces
-    story.append(Paragraph("Multi-Step Orchestration & User Interfaces", title_style))
-    story.append(Paragraph("Stateful execution engine, interactive CLI, and Glassmorphism Web Dashboard", subtitle_style))
+    # SLIDE 4: Production Links & Verification
+    story.append(Paragraph("3. Production Deployment & Deliverables", title_style))
+    story.append(Paragraph("Fully deployed for free on Vercel Global Serverless Cloud Infrastructure", subtitle_style))
     story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#00E5FF"), spaceAfter=15))
 
-    story.append(Paragraph("<b>Stateful Workflow Execution Flow:</b>", h2_style))
-    story.append(Paragraph("1. <b>Data Ingestion:</b> Skill 1 scans Snowflake warehouse inventory for critical lead-time anomalies.", bullet_style))
-    story.append(Paragraph("2. <b>Cortex Reasoning:</b> Skill 2 fuses metrics with unstructured logistics logs via Snowflake Cortex AI to synthesize root causes.", bullet_style))
-    story.append(Paragraph("3. <b>Decision Branching:</b> Policy engine evaluates budget thresholds (Auto-Approve < $50,000 vs Human Escalation >= $50,000).", bullet_style))
-    story.append(Paragraph("4. <b>Action & Audit:</b> Skill 3 issues emergency POs, updates warehouse buffer stock, and records audit trail.", bullet_style))
-
+    story.append(Paragraph("• <b>Live Production Web Application:</b><br/>&nbsp;&nbsp;<font color='#0088CC'><u>https://cortex-supplyguard-agent.vercel.app</u></font>", body_style))
+    story.append(Spacer(1, 6))
+    story.append(Paragraph("• <b>Public GitHub Repository:</b><br/>&nbsp;&nbsp;<font color='#0088CC'><u>https://github.com/kholipha-ahmmad-al-amin/cortex-supplyguard-agent</u></font>", body_style))
+    story.append(Spacer(1, 6))
+    story.append(Paragraph("• <b>Automated Test Suite Status:</b> 100% Passing (6/6 PyTest suite verified)", body_style))
     story.append(Spacer(1, 15))
-    story.append(Paragraph("<b>Dual User Interfaces Included:</b>", h2_style))
-    
-    ui_data = [
-        ["Interface Mode", "Features & Capability", "Execution Command"],
-        ["<b>Rich Interactive CLI</b>", "ANSI tables, step progress bars, trace logs, interactive query prompt", "<code>python main.py --demo</code> / <code>run_demo.bat</code>"],
-        ["<b>Glassmorphism Web UI</b>", "Live metric cards, interactive DAG animation, real-time reasoning console, audit ledger", "<code>python main.py --web</code> / <code>run_web_dashboard.bat</code>"]
-    ]
-    t3 = Table(ui_data, colWidths=[160, 370, 200])
-    t3.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#0F172A")),
-        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
-        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#CBD5E1")),
-        ('PADDING', (0,0), (-1,-1), 8),
-    ]))
-    story.append(t3)
+
+    story.append(Paragraph("<b>EquiSaaS BD Team Members:</b>", h2_style))
+    story.append(Paragraph("1. <b>Kholipha Ahmmad Al-Amin</b> (Team Leader) | Email: kholifaahmadalamin@gmail.com", body_style))
+    story.append(Paragraph("2. <b>Jannatul Nayeem</b> (Team Member) | Email: jannatulnayeemdev@gmail.com", body_style))
 
     doc.build(story, canvasmaker=NumberedCanvas)
     print(f"Successfully generated PDF slide deck at: {output_path}")
 
 if __name__ == "__main__":
-    create_presentation_pdf()
+    create_presentation_pdf("submission_deck.pdf")
