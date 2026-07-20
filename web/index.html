@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snowflake CoCo CLI | Autonomous Enterprise Resilience Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="navbar glass-card">
+      <div class="brand">
+        <div class="snowflake-icon">❄️</div>
+        <div>
+          <h1>Snowflake CoCo CLI</h1>
+          <span class="sub-brand">Autonomous SupplyGuard Enterprise Agent</span>
+        </div>
+      </div>
+      <div class="status-badge live">
+        <span class="pulse-dot"></span> CORTEX AI ONLINE
+      </div>
+      <div class="action-buttons">
+        <button id="run-btn" class="btn btn-primary">
+          <span class="btn-icon">⚡</span> Run Autonomous Agent
+        </button>
+        <button id="reset-btn" class="btn btn-secondary">
+          <span class="btn-icon">🔄</span> Reset Enterprise Data
+        </button>
+      </div>
+    </header>
+
+    <!-- Stat Cards Grid -->
+    <section class="metrics-grid">
+      <div class="metric-card glass-card">
+        <div class="metric-icon alert">⚠️</div>
+        <div class="metric-info">
+          <span class="metric-label">Active Anomalies</span>
+          <h2 id="metric-anomalies">3</h2>
+          <span class="metric-trend negative">High Lead-Time Risk</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-card">
+        <div class="metric-icon risk">🎯</div>
+        <div class="metric-info">
+          <span class="metric-label">Peak Risk Score</span>
+          <h2 id="metric-risk">75.3<span class="unit">/100</span></h2>
+          <span class="metric-trend critical">Severity: WARNING</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-card">
+        <div class="metric-icon revenue">💎</div>
+        <div class="metric-info">
+          <span class="metric-label">Quantified Risk ($)</span>
+          <h2 id="metric-financial">$203,872</h2>
+          <span class="metric-trend text-glow">Prevented Loss</span>
+        </div>
+      </div>
+
+      <div class="metric-card glass-card">
+        <div class="metric-icon success">🛡️</div>
+        <div class="metric-info">
+          <span class="metric-label">Auto-Mitigated POs</span>
+          <h2 id="metric-actions">1</h2>
+          <span class="metric-trend positive">100% Policy Compliant</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <div class="dashboard-body">
+      <!-- Left Column: Workflow Visualizer & Reasoning Log -->
+      <div class="left-col">
+        <!-- Agent Workflow DAG -->
+        <div class="glass-card panel">
+          <div class="panel-header">
+            <h3>🤖 Multi-Step Agentic Skill Orchestration</h3>
+            <span class="tag">CoCo State Machine</span>
+          </div>
+          <div class="workflow-dag">
+            <div class="dag-step" id="dag-step-1">
+              <div class="step-num">01</div>
+              <div class="step-info">
+                <div class="step-title">data-anomaly-detector</div>
+                <div class="step-desc">Structured Warehouse Data Scan</div>
+              </div>
+              <div class="step-badge">SKILL</div>
+            </div>
+
+            <div class="dag-arrow">➔</div>
+
+            <div class="dag-step" id="dag-step-2">
+              <div class="step-num">02</div>
+              <div class="step-info">
+                <div class="step-title">cortex-reasoner</div>
+                <div class="step-desc">Cortex LLM & Logs Multi-Modal Fusion</div>
+              </div>
+              <div class="step-badge">SKILL</div>
+            </div>
+
+            <div class="dag-arrow">➔</div>
+
+            <div class="dag-step" id="dag-step-3">
+              <div class="step-num">03</div>
+              <div class="step-info">
+                <div class="step-title">policy-guardrails</div>
+                <div class="step-desc">Decision & Budget Threshold Check</div>
+              </div>
+              <div class="step-badge branch">BRANCH</div>
+            </div>
+
+            <div class="dag-arrow">➔</div>
+
+            <div class="dag-step" id="dag-step-4">
+              <div class="step-num">04</div>
+              <div class="step-info">
+                <div class="step-title">action-executor</div>
+                <div class="step-desc">Transactional PO & Audit Logging</div>
+              </div>
+              <div class="step-badge">SKILL</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Console / Live Execution Trace -->
+        <div class="glass-card panel terminal-panel">
+          <div class="panel-header">
+            <h3>💻 CoCo CLI Live Reasoning Trace</h3>
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+          </div>
+          <div class="terminal-body" id="terminal-console">
+            <div class="log-line comment"># Snowflake CoCo CLI Agent Environment Initialized...</div>
+            <div class="log-line success">[OK] Loaded 3 CoCo Agent Skills: data-anomaly-detector, cortex-reasoner, action-executor</div>
+            <div class="log-line info">Ready to process enterprise supply chain queries. Click 'Run Autonomous Agent' above.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Warehouse Inventory & Audit Logs -->
+      <div class="right-col">
+        <!-- Warehouse Inventory Table -->
+        <div class="glass-card panel">
+          <div class="panel-header">
+            <h3>📦 Snowflake Inventory Levels</h3>
+            <span class="tag">Live SQL Data</span>
+          </div>
+          <div class="table-wrapper">
+            <table id="inventory-table">
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Item Name</th>
+                  <th>Stock</th>
+                  <th>Lead Time</th>
+                  <th>Delay</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Audit Trail Table -->
+        <div class="glass-card panel">
+          <div class="panel-header">
+            <h3>📋 Agent Audit & PO Ledger</h3>
+            <span class="tag">Policy Ledger</span>
+          </div>
+          <div class="table-wrapper">
+            <table id="audit-table">
+              <thead>
+                <tr>
+                  <th>Action ID</th>
+                  <th>PO Number</th>
+                  <th>Action Type</th>
+                  <th>Cost ($)</th>
+                  <th>Authorization</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
