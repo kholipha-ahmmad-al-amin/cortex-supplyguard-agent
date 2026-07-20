@@ -33,3 +33,5 @@ ENV/
 .idea/
 *.swp
 *.swo
+
+.vercel

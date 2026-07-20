@@ -13,16 +13,20 @@ from src.snowflake_engine import SnowflakeEngine
 from src.mock_data_generator import seed_enterprise_database
 from src.agent_orchestrator import AgentOrchestrator
 
-app = Flask(__name__, static_folder=".")
-engine = SnowflakeEngine()
+WEB_DIR = os.path.abspath(os.path.dirname(__file__))
+app = Flask(__name__, static_folder=WEB_DIR, static_url_path="")
+
+# Use in-memory SQLite DB for serverless deployment compatibility
+engine = SnowflakeEngine(db_path=":memory:")
+seed_enterprise_database(engine)
 
 @app.route("/")
 def index():
-    return send_from_directory(".", "index.html")
+    return send_from_directory(WEB_DIR, "index.html")
 
 @app.route("/<path:filename>")
 def static_files(filename):
-    return send_from_directory(".", filename)
+    return send_from_directory(WEB_DIR, filename)
 
 @app.route("/api/inventory")
 def get_inventory():
@@ -46,9 +50,9 @@ def reset_data():
     return jsonify({"status": "SUCCESS", "message": "Enterprise database reset & re-seeded."})
 
 def start_web_server(port: int = 5000):
-    seed_enterprise_database(engine)
     print(f"\n🚀 Enterprise CoCo Web Dashboard running live at http://127.0.0.1:{port}\n")
-    app.run(host="127.0.0.1", port=port, debug=False)
+    app.run(host="0.0.0.0", port=port, debug=False)
 
 if __name__ == "__main__":
-    start_web_server(port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    start_web_server(port=port)

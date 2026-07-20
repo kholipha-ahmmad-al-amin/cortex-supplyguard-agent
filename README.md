@@ -4,7 +4,8 @@
 **Engineering Team:** EquiSaaS BD  
 **Founder & Systems Lead:** Kholipha Ahmmad Al-Amin (kholifaahmadalamin@gmail.com)  
 **Hackathon Challenge:** Snowflake CoCo CLI Hackathon 2026 (Intelligent Workflow Automation Agents)  
-**Public Repository:** https://github.com/kholipha-ahmmad-al-amin/cortex-supplyguard-agent  
+**Live Application URL:** https://cortex-supplyguard-agent.vercel.app  
+**Public GitHub Repository:** https://github.com/kholipha-ahmmad-al-amin/cortex-supplyguard-agent  
 
 ---
 
@@ -32,13 +33,17 @@ The system detects statistical inventory vulnerabilities, cross-references unstr
 
 ## Live Demo & Tech Stack
 
-Cortex-SupplyGuard is engineered for zero-cost deployment, allowing enterprises to run the full cognitive stack locally or in edge environments without incurring recurring server overhead.
+Cortex-SupplyGuard is deployed **100% free** on cloud infrastructure and accessible worldwide.
+
+* **Live Interactive Web Application:** https://cortex-supplyguard-agent.vercel.app
+* **Public GitHub Source Code:** https://github.com/kholipha-ahmmad-al-amin/cortex-supplyguard-agent
 
 ### Tech Stack Breakdown
 * **Agentic Framework:** Snowflake CoCo CLI (Cortex Code Agent Skills Architecture)
 * **Cognitive AI Engine:** Snowflake Cortex AI (Snowflake Arctic LLM Completion Functions)
 * **Database Layer:** Snowflake AI Data Cloud / High-Performance SQLite Enterprise Emulator
 * **User Interface:** Rich Terminal CLI (ANSI Traces, Animated Progress Bars) & Glassmorphism Web App (HTML5, Vanilla CSS3, ES6 JavaScript, Flask)
+* **Cloud Hosting:** Vercel Global Edge Serverless Platform (100% Free Production Tier)
 * **Testing & Quality Assurance:** PyTest End-to-End Suite
 
 ---
@@ -270,4 +275,5 @@ Developed by **EquiSaaS BD** for the Snowflake CoCo CLI Hackathon 2026.
 
 * **Engineering Lead:** Kholipha Ahmmad Al-Amin
 * **Email:** kholifaahmadalamin@gmail.com
+* **Live Application:** https://cortex-supplyguard-agent.vercel.app
 * **GitHub Organization:** https://github.com/kholipha-ahmmad-al-amin
